@@ -692,7 +692,7 @@ struct SemanticValueRow: View {
                 .font(.subheadline)
                 .foregroundColor(.secondary)
             Spacer()
-            Text(value)
+            Text(NSLocalizedString(value, comment: ""))
                 .font(.subheadline)
                 .foregroundColor(.primary)
                 .multilineTextAlignment(.trailing)

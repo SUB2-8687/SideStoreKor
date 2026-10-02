@@ -208,11 +208,11 @@ struct PairingFileDetailView: View {
 
     private func metadataRow(label: String, value: String, valueColor: Color = .white) -> some View {
         HStack {
-            Text(label)
+            Text(NSLocalizedString(label, comment: ""))
                 .font(.system(size: 15))
                 .foregroundColor(Color.white.opacity(0.7))
             Spacer()
-            Text(value)
+            Text(NSLocalizedString(value, comment: ""))
                 .font(.system(size: 15, weight: .medium))
                 .foregroundColor(valueColor)
         }

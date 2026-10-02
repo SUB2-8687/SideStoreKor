@@ -117,7 +117,7 @@ struct ProfilePortalDetailView: View {
                                         .foregroundColor(.secondary)
                                     let hasKey = ProfileManager.shared.hasPrivateKey(for: cert)
                                     HStack(spacing: 4) {
-                                        Text("Type: \(hasKey ? "public + private" : "public only")")
+                                        Text(String(format: NSLocalizedString("Type: %@", comment: ""), NSLocalizedString(hasKey ? "public + private" : "public only", comment: "")))
                                             .font(.caption2)
                                             .foregroundColor(hasKey ? .green : .secondary)
                                         if hasKey {

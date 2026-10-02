@@ -506,8 +506,8 @@ class CertificatesViewModel: ObservableObject {
             let withKeys    = sorted.filter { self.hasPrivateKey(for: $0) }
             let withoutKeys = sorted.filter { !self.hasPrivateKey(for: $0) }
             var groups = [GroupedCertificates]()
-            if !withKeys.isEmpty    { groups.append(GroupedCertificates(name: "Public + Private Keys", certificates: withKeys)) }
-            if !withoutKeys.isEmpty { groups.append(GroupedCertificates(name: "Public Keys Only",      certificates: withoutKeys)) }
+            if !withKeys.isEmpty    { groups.append(GroupedCertificates(name: NSLocalizedString("Public + Private Keys", comment: ""), certificates: withKeys)) }
+            if !withoutKeys.isEmpty { groups.append(GroupedCertificates(name: NSLocalizedString("Public Keys Only", comment: ""), certificates: withoutKeys)) }
             return groups
         case .name:
             let grouped = Dictionary(grouping: sorted) { cert -> String in
@@ -524,13 +524,13 @@ class CertificatesViewModel: ObservableObject {
         case .creationDate:
             let grouped = Dictionary(grouping: sorted) { cert -> String in
                 let year = Calendar.current.component(.year, from: cert.creationDate)
-                return year > 1970 ? "Created in \(year)" : "Created (Unknown Date)"
+                return year > 1970 ? String(format: NSLocalizedString("Created in %lld", comment: ""), year) : NSLocalizedString("Created (Unknown Date)", comment: "")
             }
             return grouped.keys.sorted(by: >).map { GroupedCertificates(name: $0, certificates: grouped[$0] ?? []) }
         case .expiryDate:
             let grouped = Dictionary(grouping: sorted) { cert -> String in
                 let year = Calendar.current.component(.year, from: cert.expiryDate)
-                return year > 1970 ? "Expires in \(year)" : "Expires (Unknown Date)"
+                return year > 1970 ? String(format: NSLocalizedString("Expires in %lld", comment: ""), year) : NSLocalizedString("Expires (Unknown Date)", comment: "")
             }
             return grouped.keys.sorted(by: <).map { GroupedCertificates(name: $0, certificates: grouped[$0] ?? []) }
         }

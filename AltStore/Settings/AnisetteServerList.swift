@@ -297,7 +297,7 @@ struct AnisetteServersView: View {
                                 .font(.headline)
                                 .foregroundColor(.primary)
 
-                            Text(viewModel.errorMessage ?? "No servers available.")
+                            Text(viewModel.errorMessage ?? NSLocalizedString("No servers available.", comment: ""))
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                                 .multilineTextAlignment(.center)
@@ -409,7 +409,7 @@ struct AnisetteServersView: View {
                         Text("Catalog File")
                             .foregroundColor(.primary)
                         Spacer()
-                        Text(viewModel.importedFileName ?? "Imported File")
+                        Text(viewModel.importedFileName ?? NSLocalizedString("Imported File", comment: ""))
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }

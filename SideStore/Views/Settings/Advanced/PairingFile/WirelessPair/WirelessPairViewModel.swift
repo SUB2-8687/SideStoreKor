@@ -54,9 +54,9 @@ struct WirelessPairTarget: Identifiable, Hashable {
     }
     
     var typeBadge: String {
-        if service.type.contains("manual-pairing") { return "Apple TV / Manual" }
-        if service.type.contains("pairable-host") { return "Pairable Host" }
-        if service.type.contains("remotepairing") { return "Remote Device" }
+        if service.type.contains("manual-pairing") { return NSLocalizedString("Apple TV / Manual", comment: "") }
+        if service.type.contains("pairable-host") { return NSLocalizedString("Pairable Host", comment: "") }
+        if service.type.contains("remotepairing") { return NSLocalizedString("Remote Device", comment: "") }
         return BonjourDiscoveryManager.friendlyName(for: service.type) ?? service.type
     }
     

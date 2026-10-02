@@ -820,7 +820,7 @@ public struct InfoPlistCustomizationCoreView: View {
                         }
                     }
                 Spacer()
-                Text(item.type.rawValue)
+                Text(NSLocalizedString(item.type.rawValue, comment: ""))
                     .font(.system(size: 10, weight: .semibold))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
@@ -904,7 +904,7 @@ public struct InfoPlistCustomizationCoreView: View {
                 Section(header: Text("Value Type")) {
                     Picker("Type", selection: $newKeyType) {
                         ForEach(RawPlistType.allCases) { type in
-                            Text(type.rawValue).tag(type)
+                            Text(NSLocalizedString(type.rawValue, comment: "")).tag(type)
                         }
                     }
                     .pickerStyle(.segmented)
@@ -949,7 +949,7 @@ public struct InfoPlistCustomizationCoreView: View {
         HStack(spacing: 5) {
             Image(systemName: icon)
                 .font(.system(size: 11, weight: .semibold))
-            Text(title)
+            Text(NSLocalizedString(title, comment: ""))
                 .font(.caption)
                 .fontWeight(.semibold)
         }

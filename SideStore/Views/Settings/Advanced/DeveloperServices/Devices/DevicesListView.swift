@@ -292,7 +292,7 @@ struct DevicesListView: View {
                     }
 
                     Section(header: Text("Device Identifier (UDID)")) {
-                        Text(device.identifier.isEmpty ? "Not Available" : device.identifier)
+                        Text(device.identifier.isEmpty ? NSLocalizedString("Not Available", comment: "") : device.identifier)
                             .font(.system(.subheadline, design: .monospaced))
                             .foregroundColor(.secondary)
                     }

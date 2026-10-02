@@ -391,7 +391,7 @@ struct PairingFileManagementView: View {
             viewModel.toggleReveal(for: fieldKey)
         } label: {
             HStack {
-                Text(label)
+                Text(NSLocalizedString(label, comment: ""))
                     .font(.system(size: 14))
                     .foregroundColor(Color.white.opacity(0.6))
                 Spacer()

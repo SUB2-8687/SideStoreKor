@@ -165,7 +165,7 @@ struct DeveloperOptionsView: View {
                     #else
                     let title = "TOP SHELF OPTIONS"
                     #endif
-                    Text(title)
+                    Text(NSLocalizedString(title, comment: ""))
                         .font(.system(size: 13, weight: .semibold))
                         .foregroundColor(Color.white.opacity(0.6))
                         .padding(.horizontal, 16)
@@ -182,7 +182,7 @@ struct DeveloperOptionsView: View {
                                 #else
                                 let title = "Reload Top Shelf"
                                 #endif
-                                Text(title)
+                                Text(NSLocalizedString(title, comment: ""))
                                     .font(.system(size: 17, weight: .bold))
                                     .foregroundColor(.white)
                                 Spacer()
@@ -204,7 +204,7 @@ struct DeveloperOptionsView: View {
                                 #else
                                 let title = "Rotate Top Shelf Log"
                                 #endif
-                                Text(title)
+                                Text(NSLocalizedString(title, comment: ""))
                                     .font(.system(size: 17, weight: .bold))
                                     .foregroundColor(.white)
                                 Spacer()
@@ -517,7 +517,7 @@ struct DeveloperOptionsView: View {
                                AuthManager.shared.password == nil ||
                                CertificateManager.shared.activeCertificate == nil {
                                 if let top = UIApplication.shared.topViewController() {
-                                    let toastView = ToastView(text: NSLocalizedString("Failed to export account!", comment: ""), detailText: "Account not found or missing credentials.")
+                                    let toastView = ToastView(text: NSLocalizedString("Failed to export account!", comment: ""), detailText: NSLocalizedString("Account not found or missing credentials.", comment: ""))
                                     toastView.show(in: top)
                                 }
                             } else {
@@ -749,13 +749,13 @@ struct DeveloperOptionsView: View {
     private func exportAccountJSON(password: String) {
         guard let top = UIApplication.shared.topViewController() else { return }
         guard let account = ImportExport.exportAccountJSON(password: password) else {
-            let toastView = ToastView(text: NSLocalizedString("Failed to export account!", comment: ""), detailText: "Account not found or missing credentials.")
+            let toastView = ToastView(text: NSLocalizedString("Failed to export account!", comment: ""), detailText: NSLocalizedString("Account not found or missing credentials.", comment: ""))
             toastView.show(in: top)
             return
         }
         
         guard let accountData = try? Foundation.JSONEncoder().encode(account) else {
-            let toastView = ToastView(text: NSLocalizedString("Failed to export account data!", comment: ""), detailText: "Account malformed.")
+            let toastView = ToastView(text: NSLocalizedString("Failed to export account data!", comment: ""), detailText: NSLocalizedString("Account malformed.", comment: ""))
             toastView.show(in: top)
             return
         }
@@ -836,7 +836,7 @@ struct DeveloperOptionsView: View {
             do {
                 try await startEMProxy()
                 await MainActor.run {
-                    let toastView = ToastView(text: NSLocalizedString("Started EMProxy", comment: ""), detailText: "EMProxy loopback server is running.")
+                    let toastView = ToastView(text: NSLocalizedString("Started EMProxy", comment: ""), detailText: NSLocalizedString("EMProxy loopback server is running.", comment: ""))
                     toastView.show(in: top)
                 }
             } catch {
@@ -854,7 +854,7 @@ struct DeveloperOptionsView: View {
             do {
                 try await stopEMProxy()
                 await MainActor.run {
-                    let toastView = ToastView(text: NSLocalizedString("Stopped EMProxy", comment: ""), detailText: "EMProxy loopback server stopped.")
+                    let toastView = ToastView(text: NSLocalizedString("Stopped EMProxy", comment: ""), detailText: NSLocalizedString("EMProxy loopback server stopped.", comment: ""))
                     toastView.show(in: top)
                 }
             } catch {

@@ -462,11 +462,11 @@ struct InfoRow: View {
     
     var body: some View {
         HStack {
-            Text(label)
+            Text(NSLocalizedString(label, comment: ""))
                 .font(.subheadline)
                 .foregroundColor(.secondary)
             Spacer()
-            Text(value)
+            Text(NSLocalizedString(value, comment: ""))
                 .font(.subheadline)
                 .foregroundColor(valueColor)
                 .multilineTextAlignment(.trailing)
@@ -481,11 +481,11 @@ struct ProfileInfoRow: View {
     
     var body: some View {
         HStack {
-            Text(label)
+            Text(NSLocalizedString(label, comment: ""))
                 .font(.subheadline)
                 .foregroundColor(.secondary)
             Spacer()
-            Text(value)
+            Text(NSLocalizedString(value, comment: ""))
                 .font(.subheadline)
                 .foregroundColor(valueColor)
                 .multilineTextAlignment(.trailing)

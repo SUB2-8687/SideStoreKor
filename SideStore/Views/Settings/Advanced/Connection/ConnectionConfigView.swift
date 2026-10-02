@@ -200,7 +200,7 @@ struct ConnectionConfigView: View {
             .alert("Invalid Configuration", isPresented: $showValidationErrorAlert) {
                 SwiftUI.Button("OK", role: .cancel) {}
             } message: {
-                Text(validationError ?? "Please check your configuration settings.")
+                Text(validationError ?? NSLocalizedString("Please check your configuration settings.", comment: ""))
             }
             
             if showConfirmDialog {

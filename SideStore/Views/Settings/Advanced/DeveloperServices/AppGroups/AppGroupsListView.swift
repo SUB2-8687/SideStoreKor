@@ -60,7 +60,7 @@ struct AppGroupsListView: View {
                         } label: {
                             VStack(alignment: .leading, spacing: 4) {
                                 HStack {
-                                    Text(group.name.isEmpty ? "App Group" : group.name)
+                                    Text(group.name.isEmpty ? NSLocalizedString("App Group", comment: "") : group.name)
                                         .font(.headline)
                                         .foregroundColor(.primary)
                                     Spacer()
