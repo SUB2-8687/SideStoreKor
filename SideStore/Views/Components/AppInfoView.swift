@@ -193,7 +193,7 @@ struct AppInfoView: View {
                                     Text(showResignedProfile ? "No Resigned Profile Cached" : "No Bundle Profile Found")
                                         .font(.subheadline)
                                         .foregroundColor(.secondary)
-                                    Text("Tap toggle to view \(showResignedProfile ? "bundle" : "resigned") profile")
+                                    Text(showResignedProfile ? "Tap toggle to view bundle profile" : "Tap toggle to view resigned profile")
                                         .font(.caption2)
                                         .foregroundColor(.secondary)
                                 }
@@ -249,7 +249,7 @@ struct AppInfoView: View {
                                     Text(showResignedInfoPlist ? "No Resigned Info.plist Cached" : "No Bundle Info.plist Found")
                                         .font(.subheadline)
                                         .foregroundColor(.secondary)
-                                    Text("Tap toggle to view \(showResignedInfoPlist ? "bundle" : "resigned") Info.plist")
+                                    Text(showResignedInfoPlist ? "Tap toggle to view bundle Info.plist" : "Tap toggle to view resigned Info.plist")
                                         .font(.caption2)
                                         .foregroundColor(.secondary)
                                 }
@@ -759,7 +759,7 @@ struct ExtensionInfoView: View {
                                 Text(showResignedProfile ? "No Resigned Profile Cached" : "No Bundle Profile Found")
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
-                                Text("Tap toggle to view \(showResignedProfile ? "bundle" : "resigned") profile")
+                                Text(showResignedProfile ? "Tap toggle to view bundle profile" : "Tap toggle to view resigned profile")
                                     .font(.caption2)
                                     .foregroundColor(.secondary)
                             }
@@ -815,7 +815,7 @@ struct ExtensionInfoView: View {
                                 Text(showResignedInfoPlist ? "No Resigned Info.plist Cached" : "No Bundle Info.plist Found")
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
-                                Text("Tap toggle to view \(showResignedInfoPlist ? "bundle" : "resigned") Info.plist")
+                                Text(showResignedInfoPlist ? "Tap toggle to view bundle Info.plist" : "Tap toggle to view resigned Info.plist")
                                     .font(.caption2)
                                     .foregroundColor(.secondary)
                             }

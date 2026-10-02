@@ -36,9 +36,9 @@ public enum BackgroundServiceMode: String, CaseIterable, Sendable {
     public var subtitle: String {
         switch self {
         case .audio:
-            return "Silent keepalive background audio loop"
+            return NSLocalizedString("Silent keepalive background audio loop", comment: "")
         case .location:
-            return "Low-power keepalive background location"
+            return NSLocalizedString("Low-power keepalive background location", comment: "")
         }
     }
 }

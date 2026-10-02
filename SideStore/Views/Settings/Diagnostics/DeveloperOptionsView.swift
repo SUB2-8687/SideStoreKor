@@ -695,10 +695,10 @@ struct DeveloperOptionsView: View {
         do {
             let zipPath = try await safeDumpProfiles(docsURL.path)
             let fileName = URL(fileURLWithPath: zipPath).lastPathComponent
-            dumpProfilesAlertMessage = "Profiles saved to:\n\(fileName)"
+            dumpProfilesAlertMessage = String(format: NSLocalizedString("Profiles saved to:\n%@", comment: ""), fileName)
             showDumpProfilesAlert = true
         } catch {
-            dumpProfilesAlertMessage = "Failed to dump profiles:\n\(error.localizedDescription)"
+            dumpProfilesAlertMessage = String(format: NSLocalizedString("Failed to dump profiles:\n%@", comment: ""), error.localizedDescription)
             showDumpProfilesAlert = true
         }
     }
@@ -714,7 +714,7 @@ struct DeveloperOptionsView: View {
                 do {
                     try await ImportExport.importAccountJSON(from: url)
                     let email = AuthManager.shared.currentAppleID ?? ""
-                    let toastView = ToastView(text: NSLocalizedString("Successfully imported '\(email)'!", comment: ""), detailText: "SideStore should be fully operational!")
+                    let toastView = ToastView(text: String(format: NSLocalizedString("Successfully imported '%@'!", comment: ""), email), detailText: NSLocalizedString("SideStore should be fully operational!", comment: ""))
                     toastView.show(in: top)
                 } catch {
                     let toastView = ToastView(text: NSLocalizedString("Failed to import account JSON!", comment: ""), detailText: error.localizedDescription)
@@ -735,7 +735,7 @@ struct DeveloperOptionsView: View {
                 do {
                     try await ImportExport.importAccountJSON(from: url)
                     let email = AuthManager.shared.currentAppleID ?? ""
-                    let toastView = ToastView(text: NSLocalizedString("Successfully imported '\(email)'!", comment: ""), detailText: "SideStore should be fully operational!")
+                    let toastView = ToastView(text: String(format: NSLocalizedString("Successfully imported '%@'!", comment: ""), email), detailText: NSLocalizedString("SideStore should be fully operational!", comment: ""))
                     toastView.show(in: top)
                 } catch {
                     let toastView = ToastView(text: NSLocalizedString("Failed to import account JSON!", comment: ""), detailText: error.localizedDescription)
@@ -788,7 +788,7 @@ struct DeveloperOptionsView: View {
     
     private func toggleRow(title: String, isOn: Binding<Bool>) -> some View {
         HStack {
-            Text(title)
+            Text(LocalizedStringKey(title))
                 .font(.system(size: 17, weight: .bold))
                 .foregroundColor(.white)
                 .fixedSize(horizontal: false, vertical: true)
@@ -871,7 +871,7 @@ struct DeveloperOptionsView: View {
         let started = BackgroundServiceManager.ensureBackgroundServicesStarted()
         let modeName = UserDefaults.standard.backgroundServiceMode.displayName
         if started {
-            let toastView = ToastView(text: NSLocalizedString("Started Background Service", comment: ""), detailText: "\(modeName) keepalive is running.")
+            let toastView = ToastView(text: NSLocalizedString("Started Background Service", comment: ""), detailText: String(format: NSLocalizedString("%@ keepalive is running.", comment: ""), modeName))
             toastView.show(in: top)
         } else {
             let toastView = ToastView(text: NSLocalizedString("Background Service Disabled", comment: ""), detailText: "Enable background service in User Customizations.")
@@ -911,10 +911,10 @@ struct DeveloperOptionsView: View {
         #endif
         do {
             if let rotatedURL = try WidgetLogManager.rotateLog() {
-                let toastView = ToastView(text: NSLocalizedString("Rotated \(logName) Log", comment: ""), detailText: "Saved to WidgetLogs/\(rotatedURL.lastPathComponent)")
+                let toastView = ToastView(text: String(format: NSLocalizedString("Rotated %@ Log", comment: ""), logName), detailText: String(format: NSLocalizedString("Saved to WidgetLogs/%@", comment: ""), rotatedURL.lastPathComponent))
                 toastView.show(in: top)
             } else {
-                let toastView = ToastView(text: NSLocalizedString("\(logName) Log Empty", comment: ""), detailText: "Nothing to rotate.")
+                let toastView = ToastView(text: String(format: NSLocalizedString("%@ Log Empty", comment: ""), logName), detailText: NSLocalizedString("Nothing to rotate.", comment: ""))
                 toastView.show(in: top)
             }
         } catch {

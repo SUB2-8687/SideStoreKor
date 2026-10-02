@@ -273,7 +273,7 @@ struct PairingFileDetailView: View {
 
     private func saveEditedContent() {
         guard let data = editedContent.data(using: .utf8) else {
-            invalidPlistMessage = "Could not encode text as UTF-8."
+            invalidPlistMessage = NSLocalizedString("Could not encode text as UTF-8.", comment: "")
             showingInvalidPlistAlert = true
             return
         }
@@ -281,7 +281,7 @@ struct PairingFileDetailView: View {
         do {
             _ = try PropertyListSerialization.propertyList(from: data, options: [], format: nil)
         } catch {
-            invalidPlistMessage = "The property list contains syntax errors: \(error.localizedDescription)"
+            invalidPlistMessage = String(format: NSLocalizedString("The property list contains syntax errors: %@", comment: ""), error.localizedDescription)
             showingInvalidPlistAlert = true
             return
         }
@@ -292,7 +292,7 @@ struct PairingFileDetailView: View {
             UserDefaults.standard.setPairingFileEditSuppressed(true, forHash: currentSHA256)
             isEditing = false
         } catch {
-            invalidPlistMessage = "Failed to save pairing file: \(error.localizedDescription)"
+            invalidPlistMessage = String(format: NSLocalizedString("Failed to save pairing file: %@", comment: ""), error.localizedDescription)
             showingInvalidPlistAlert = true
         }
     }

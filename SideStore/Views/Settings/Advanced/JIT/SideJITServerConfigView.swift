@@ -26,11 +26,11 @@ enum SideJITConnectionStatus: Equatable {
     
     var title: String {
         switch self {
-        case .disabled: return "Disabled"
-        case .ready(let latency, _): return "Ready (\(latency) ms)"
-        case .discovering: return "Discovering Bonjour…"
-        case .checking: return "Checking Connection…"
-        case .disconnected: return "Unreachable"
+        case .disabled: return NSLocalizedString("Disabled", comment: "")
+        case .ready(let latency, _): return String(format: NSLocalizedString("Ready (%d ms)", comment: ""), latency)
+        case .discovering: return NSLocalizedString("Discovering Bonjour…", comment: "")
+        case .checking: return NSLocalizedString("Checking Connection…", comment: "")
+        case .disconnected: return NSLocalizedString("Unreachable", comment: "")
         }
     }
 }
@@ -185,7 +185,7 @@ struct SideJITServerConfigView: View {
             HStack {
                 Text("Resolution Mode")
                 Spacer()
-                Text(customAddress.isEmpty ? "Auto (Bonjour mDNS)" : "Manual Override")
+                Text(customAddress.isEmpty ? NSLocalizedString("Auto (Bonjour mDNS)", comment: "") : NSLocalizedString("Manual Override", comment: ""))
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
@@ -299,11 +299,11 @@ struct SideJITServerConfigView: View {
                     
                     Spacer()
                     
-                    Text("\(log.statusCode)")
+                    Text(String(format: NSLocalizedString("%d", comment: ""), log.statusCode))
                         .font(.system(.caption, design: .monospaced).bold())
                         .foregroundColor(log.isSuccess ? .green : .red)
                     
-                    Text("\(log.latencyMs)ms")
+                    Text(String(format: NSLocalizedString("%dms", comment: ""), log.latencyMs))
                         .font(.caption2)
                         .foregroundColor(.secondary)
                 }
