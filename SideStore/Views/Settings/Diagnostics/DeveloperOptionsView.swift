@@ -158,65 +158,6 @@ struct DeveloperOptionsView: View {
                     .cornerRadius(14)
                 }
                 
-                // Section: Widget Options
-                VStack(alignment: .leading, spacing: 8) {
-                    #if !os(tvOS)
-                    let title = "WIDGET OPTIONS"
-                    #else
-                    let title = "TOP SHELF OPTIONS"
-                    #endif
-                    Text(NSLocalizedString(title, comment: ""))
-                        .font(.system(size: 13, weight: .semibold))
-                        .foregroundColor(Color.white.opacity(0.6))
-                        .padding(.horizontal, 16)
-                    
-                    VStack(spacing: 0) {
-                        SwiftUI.Button(action: { triggerReloadAllWidgets() }) {
-                            HStack(spacing: 12) {
-                                Image(systemName: "arrow.clockwise")
-                                    .font(.system(size: 18, weight: .semibold))
-                                    .foregroundColor(.white)
-
-                                #if !os(tvOS)
-                                let title = "Reload All Widgets"
-                                #else
-                                let title = "Reload Top Shelf"
-                                #endif
-                                Text(NSLocalizedString(title, comment: ""))
-                                    .font(.system(size: 17, weight: .bold))
-                                    .foregroundColor(.white)
-                                Spacer()
-                            }
-                            .padding(.horizontal, 16)
-                            .frame(height: 50)
-                        }
-                        
-                        divider
-                        
-                        SwiftUI.Button(action: { triggerRotateWidgetLog() }) {
-                            HStack(spacing: 12) {
-                                Image(systemName: "arrow.triangle.2.circlepath")
-                                    .font(.system(size: 18, weight: .semibold))
-                                    .foregroundColor(.white)
-                                
-                                #if !os(tvOS)
-                                let title = "Rotate Widget Log"
-                                #else
-                                let title = "Rotate Top Shelf Log"
-                                #endif
-                                Text(NSLocalizedString(title, comment: ""))
-                                    .font(.system(size: 17, weight: .bold))
-                                    .foregroundColor(.white)
-                                Spacer()
-                            }
-                            .padding(.horizontal, 16)
-                            .frame(height: 50)
-                        }
-                    }
-                    .background(Color.settingsRowBackground)
-                    .cornerRadius(14)
-                }
-                
                 // Section 2: Database Options
                 VStack(alignment: .leading, spacing: 8) {
                     Text("DATABASE OPTIONS")
@@ -884,42 +825,5 @@ struct DeveloperOptionsView: View {
         BackgroundServiceManager.stop()
         let toastView = ToastView(text: NSLocalizedString("Stopped Background Service", comment: ""), detailText: "Background keepalive service stopped.")
         toastView.show(in: top)
-    }
-    
-    private func triggerReloadAllWidgets() {
-        #if !os(tvOS)
-        WidgetCenter.shared.reloadAllTimelines()
-        let title = NSLocalizedString("Reloaded All Widgets", comment: "")
-        let detail = "Triggered timeline refresh for all widgets."
-        #else
-        NotificationCenter.default.post(name: .TVTopShelfItemsDidChange, object: nil)
-        let title = NSLocalizedString("Reloaded Top Shelf", comment: "")
-        let detail = "Triggered Top Shelf refresh."
-        #endif
-        if let top = UIApplication.shared.topViewController() {
-            let toastView = ToastView(text: title, detailText: detail)
-            toastView.show(in: top)
-        }
-    }
-    
-    private func triggerRotateWidgetLog() {
-        guard let top = UIApplication.shared.topViewController() else { return }
-        #if !os(tvOS)
-        let logName = "Widget"
-        #else
-        let logName = "Top Shelf"
-        #endif
-        do {
-            if let rotatedURL = try WidgetLogManager.rotateLog() {
-                let toastView = ToastView(text: String(format: NSLocalizedString("Rotated %@ Log", comment: ""), logName), detailText: String(format: NSLocalizedString("Saved to WidgetLogs/%@", comment: ""), rotatedURL.lastPathComponent))
-                toastView.show(in: top)
-            } else {
-                let toastView = ToastView(text: String(format: NSLocalizedString("%@ Log Empty", comment: ""), logName), detailText: NSLocalizedString("Nothing to rotate.", comment: ""))
-                toastView.show(in: top)
-            }
-        } catch {
-            let toastView = ToastView(text: NSLocalizedString("Failed to Rotate Log", comment: ""), detailText: error.localizedDescription)
-            toastView.show(in: top)
-        }
     }
 }
