@@ -114,23 +114,11 @@
 				Resources/ReleaseEntitlements.plist,
 			);
 			platformFiltersByRelativePath = {
-				Authentication/Authentication.storyboard = (
-					ios,
-				);
 				Authentication/tvOS/Authentication.storyboard = (
 					tvos,
 				);
-				Components/AppBannerView.xib = (
-					ios,
-				);
 				Components/tvOS/AppBannerView.xib = (
 					tvos,
-				);
-				"My Apps/InstalledAppsCollectionHeaderView.xib" = (
-					ios,
-				);
-				"My Apps/UpdateCollectionViewCell.xib" = (
-					ios,
 				);
 				"My Apps/tvOS/InstalledAppsCollectionHeaderView.xib" = (
 					tvos,
@@ -138,20 +126,8 @@
 				"My Apps/tvOS/UpdateCollectionViewCell.xib" = (
 					tvos,
 				);
-				News/NewsCollectionViewCell.xib = (
-					ios,
-				);
 				News/tvOS/NewsCollectionViewCell.xib = (
 					tvos,
-				);
-				Settings/AboutPatreonHeaderView.xib = (
-					ios,
-				);
-				Settings/Settings.storyboard = (
-					ios,
-				);
-				Settings/SettingsHeaderFooterView.xib = (
-					ios,
 				);
 				Settings/tvOS/AboutPatreonHeaderView.xib = (
 					tvos,
@@ -162,22 +138,13 @@
 				Settings/tvOS/SettingsHeaderFooterView.xib = (
 					tvos,
 				);
-				Sources/Components/SourceHeaderView.xib = (
-					ios,
-				);
 				Sources/Components/tvOS/SourceHeaderView.xib = (
 					tvos,
-				);
-				Sources/Sources.storyboard = (
-					ios,
 				);
 				Sources/tvOS/Sources.storyboard = (
 					tvos,
 				);
 				iOS/LaunchScreen.storyboard = (
-					ios,
-				);
-				iOS/Main.storyboard = (
 					ios,
 				);
 				tvOS/Main.storyboard = (
@@ -420,6 +387,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = BFD247612284B9A500981D42;
 			packageReferences = (
@@ -729,7 +697,7 @@
 					"-Wno-module-import-in-extern-c",
 				);
 				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG BETA";
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = "debug-only";
@@ -798,7 +766,7 @@
 					"-Wno-module-import-in-extern-c",
 				);
 				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = BETA;
 				SWIFT_COMPILATION_MODE = wholemodule;
